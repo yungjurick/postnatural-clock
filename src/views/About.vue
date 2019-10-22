@@ -12,25 +12,41 @@
         the perception of human time? What would our 1 second, 1 minute, or 1 hour be equivalent for this animals and waste?
       </p>
       <p class="about__text"> 
-        Based on the average lifespan of these animals (including humans) and time it takes these waste
+        Based on the average lifespan of these animals (including humans) and the time it takes these waste
         to decompose, this timer tries to portray how their time be portrayed through a human perspective.
         For instance, 1 second of human time would be 7 seconds for a dog if their time was to be reinterpreted
         in human perception of time.
       </p>
       <br>
-      <p class="about__text"> 
-        Credits for the average lifespan of animals & waste (including humans):
+      <p class="about__text strong"> 
+        In this piece, the average human lifespan is 72 Years. So, the rates of time increment for other specimens are inferred from converting
+        their lifespan to fit the average human lifespan.
       </p>
-      <p class="about__text citing"> 
-        http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans
-        <br>
-        https://www.earthkind.com/blog/how-long-do-mice-live/
-        <br>
-        https://www.who.int/gho/mortality_burden_disease/life_tables/situation_trends/en/
-        <br>
-        https://www.petmd.com/dog/wellness/evr_dg_how_long_do_dogs_live
-        <br>
-        https://www.thebalancesmb.com/how-long-does-it-take-garbage-to-decompose-2878033
+      <br>
+      <p class="about__text"> 
+        Credits for the average lifespan of animals & waste (including human):
+      </p>
+      <p class="about__text citing">
+        <a href="http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans">Whale & Tortoise</a>
+        <a href="https://www.earthkind.com/blog/how-long-do-mice-live/">Mouse</a>
+        <a href="https://www.who.int/gho/mortality_burden_disease/life_tables/situation_trends/en/">Human</a>
+        <a href="https://www.petmd.com/dog/wellness/evr_dg_how_long_do_dogs_live">Dog</a>
+        <a href="https://www.thebalancesmb.com/how-long-does-it-take-garbage-to-decompose-2878033">Waste</a>
+      </p>
+      <br>
+      <p class="about__text"> 
+        Data used for average lifespan:
+      </p>
+      <p class="about__text"> 
+        Orange Peel - 6 Months (0.5 Years)<br>
+        Mice - 2 Years<br>
+        Milk Cartons - 5 Years<br>
+        Dog - 10 Years<br>
+        Human - 72 Years<br>
+        Tortoise (Giant Tortoise) - 100 Years <br>
+        Batteries - 100 Years<br>
+        Whale (Bowhead Whale) - 200 Years<br>
+        Plastic Bottle - 450 Years<br>
       </p>
     </div>
   </div>
@@ -48,13 +64,20 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin: 15vh 0;
   width: 100%;
   font-family: 'Roboto Mono', monospace;
   &__text {
     margin-top: 16px;
     width: 50%;
     line-height: 1.6;
+      a + a {
+        margin-left: 12px;
+        color: #36383c;
+      }
+      a:visited{
+        color: #36383c;
+      }
   }
   &__title {
     font-weight: bold;
@@ -67,7 +90,7 @@ export default {
     text-align: justify;
   }
 }
-.citing {
-  font-size: 0.9rem;
+.strong {
+  font-weight: bold;
 }
 </style>

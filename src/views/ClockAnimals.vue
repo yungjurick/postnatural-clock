@@ -172,14 +172,16 @@ export default {
   &__animal {
     height: 50px;
     position: absolute;
-    left: 75%;
-    transform: translateX(-25%);
+    left: 80%;
+    transform: translateX(-20%);
   }
   &__label {
     font-size: 1.8rem;
     position: absolute;
     left: 25%;
     transform: translateX(-75%);
+    width: 139px;
+    text-align: left;
   }
   &__type {
     font-weight: bold;

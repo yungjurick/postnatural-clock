@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import ClockAnimal from '../views/ClockAnimals'
+import ClockWaste from '../views/ClockWaste'
 
 Vue.use(VueRouter)
 
@@ -13,12 +15,12 @@ const routes = [
   {
     path: '/clock-animals',
     name: 'clock-animals',
-    component: () => import('../views/ClockAnimals.vue')
+    component: ClockAnimal
   },
   {
     path: '/clock-waste',
     name: 'clock-waste',
-    component: () => import('../views/ClockWaste.vue')
+    component: ClockWaste
   },
   {
     path: '/about',

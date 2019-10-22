@@ -22,6 +22,7 @@
           {{ `${padHour(humanTime.hour)} : ${padMinuteAndSecond(humanTime.minute)} : ${padMinuteAndSecond(humanTime.second)}` }}
         </p>
         <p class="clock__section__time__subtitle">The Human Timer</p>
+        <p class="clock__type">Animals</p>
       </div>
     </div>
     <div class="clock__bottom clock__section">
@@ -179,6 +180,11 @@ export default {
     position: absolute;
     left: 25%;
     transform: translateX(-75%);
+  }
+  &__type {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 16px;
   }
 }
 

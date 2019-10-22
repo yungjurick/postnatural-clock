@@ -10,9 +10,13 @@ Based on the average lifespan of these animals (including humans) and time it ta
 Credits for the average lifespan of animals & waste (including humans):
 
 http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans
+
 https://www.earthkind.com/blog/how-long-do-mice-live/
+
 https://www.who.int/gho/mortality_burden_disease/life_tables/situation_trends/en/
+
 https://www.petmd.com/dog/wellness/evr_dg_how_long_do_dogs_live
+
 https://www.thebalancesmb.com/how-long-does-it-take-garbage-to-decompose-2878033
 
 ## Project setup

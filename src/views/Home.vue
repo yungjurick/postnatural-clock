@@ -53,6 +53,9 @@ export default {
       border: 1.5px solid #36384C;
       border-radius: 50%;
       text-decoration: none;
+      &:visited {
+        color: #36384C;
+      }
     }
   }
 </style>

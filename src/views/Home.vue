@@ -51,6 +51,7 @@ export default {
       padding: 3px;
       font-weight: bold;
       border: 1.5px solid #36384C;
+      color: #36384C;
       border-radius: 50%;
       text-decoration: none;
       &:visited {

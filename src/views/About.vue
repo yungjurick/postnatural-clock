@@ -10,7 +10,7 @@
         Then, what would be the weight of time for other animals - such as a mouse, a dog, a tortoise, and a whale, or
         even waste? These are just a few of the many selections, but what would it be like to see their time through 
         the perception of human time? What would our 1 second, 1 minute, or 1 hour be equivalent for this animals and waste?
-        Since, we understand and sympathasize with things better when put under the perspective of a human scope, this timer will help you.
+        Since, we understand and sympathize with things better when put under the perspective of a human scope, this timer will help you.
       </p>
       <p class="about__text"> 
         Based on the average lifespan of these animals (including humans) and the time it takes these waste
@@ -49,10 +49,23 @@
         Whale (Bowhead Whale) - 200 Years<br>
         Plastic Bottle - 450 Years<br>
       </p>
+      <p class="about__text"> 
+        Credits for the Icons used in this website (they are all from Noun Project):
+      </p>
+      <p class="about__text citing">
+        Mouse - zidney<br>
+        Dog - Saeful Muslim<br>
+        Turtle - Nook Fulloption<br>
+        Whale - Ben Davis<br>
+        Orange Peel - NAMI A<br>
+        Milk Carton - Stonehub<br>
+        Battery - newstudiodesign10<br>
+        Plastic Bottle - Treat Boy<br>
+      </p>
       <br>
       <br>
       <p class="about__text">
-        Created by Yung Ju Rick Kim
+        &copy; 2019 Yung Ju Rick Kim
       </p>
     </div>
   </div>

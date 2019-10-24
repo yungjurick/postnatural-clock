@@ -3,13 +3,14 @@
     <div class="about__container">
       <h1 class="about__title">Measuring the Weight of Time</h1>
       <p class="about__text"> 
-        As humans, it is easy to believe that we see <b>weight of time</b> based on our human experience.
+        As humans, it is easy to believe that we perceive <b style="font-weight: bold;">weight of time</b> based on our subjective human experience.
         A second as a second for humans, a minute as a minute for humans, and an hour as an hour for humans.
       </p>
       <p class="about__text"> 
         Then, what would be the weight of time for other animals - such as a mouse, a dog, a tortoise, and a whale, or
         even waste? These are just a few of the many selections, but what would it be like to see their time through 
         the perception of human time? What would our 1 second, 1 minute, or 1 hour be equivalent for this animals and waste?
+        Since, we understand and sympathasize with things better when put under the perspective of a human scope, this timer will help you.
       </p>
       <p class="about__text"> 
         Based on the average lifespan of these animals (including humans) and the time it takes these waste

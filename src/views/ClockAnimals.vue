@@ -189,5 +189,23 @@ export default {
     margin-top: 16px;
   }
 }
+@media only screen and (max-width: 400px) {
+  .clock {
+    &__section {
+      &__time {
+        font-size: 1.3rem;
+      }
+    }
+    &__label {
+      font-size: 0.8rem;
+      width: auto;
+      left: 20%;
+      transform: translateX(-80%);
+    }
+    &__animal {
+      height: 25px;
+    }
+  }
+}
 
 </style>

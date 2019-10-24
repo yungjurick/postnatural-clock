@@ -59,4 +59,12 @@ export default {
       }
     }
   }
+  @media only screen and (max-width: 400px) {
+    .home__title {
+      font-size: 2.3rem;
+    }
+    .home__subtitle, .home__container__link {
+      font-size: 0.8rem;
+    }
+  }
 </style>

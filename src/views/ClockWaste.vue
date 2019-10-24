@@ -190,4 +190,23 @@ export default {
   }
 }
 
+@media only screen and (max-width: 400px) {
+  .clockWaste {
+    &__section {
+      &__time {
+        font-size: 1.3rem;
+      }
+    }
+    &__label {
+      font-size: 0.5rem;
+      width: 50px;
+      left: 20%;
+      transform: translateX(-80%);
+    }
+    &__animal {
+      height: 25px;
+    }
+  }
+}
+
 </style>

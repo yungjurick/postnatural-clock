@@ -28,7 +28,7 @@
         Credits for the average lifespan of animals & waste (including human):
       </p>
       <p class="about__text citing">
-        <a href="http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans">Whale & Tortoise</a>
+        <a href="http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans">Whale&Tortoise</a>
         <a href="https://www.earthkind.com/blog/how-long-do-mice-live/">Mouse</a>
         <a href="https://www.who.int/gho/mortality_burden_disease/life_tables/situation_trends/en/">Human</a>
         <a href="https://www.petmd.com/dog/wellness/evr_dg_how_long_do_dogs_live">Dog</a>
@@ -93,5 +93,15 @@ export default {
 }
 .strong {
   font-weight: bold;
+}
+
+@media only screen and (max-width: 400px) {
+  .about {
+    &__text {
+      font-size: 0.8rem;
+      width: 80%;
+      line-height: 1.2;
+    }
+  }
 }
 </style>

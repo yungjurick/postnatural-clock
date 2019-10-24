@@ -2,6 +2,9 @@
   <div class="about">
     <div class="about__container">
       <h1 class="about__title">Measuring the Weight of Time</h1>
+      <p class="about__text">
+        Created by Yung Ju Rick Kim
+      </p>
       <p class="about__text"> 
         As humans, it is easy to believe that we perceive <b style="font-weight: bold;">weight of time</b> based on our subjective human experience.
         A second as a second for humans, a minute as a minute for humans, and an hour as an hour for humans.

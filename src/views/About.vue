@@ -103,7 +103,6 @@ export default {
     &__text {
       font-size: 0.8rem;
       width: 80%;
-      line-height: 1.2;
     }
   }
 }

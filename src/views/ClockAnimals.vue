@@ -189,7 +189,7 @@ export default {
     margin-top: 16px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   .clock {
     &__section {
       &__time {

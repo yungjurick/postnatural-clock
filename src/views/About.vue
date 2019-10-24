@@ -100,7 +100,7 @@ export default {
   font-weight: bold;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 480px) {
   .about {
     &__text {
       font-size: 0.8rem;

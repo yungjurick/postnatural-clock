@@ -59,7 +59,7 @@ export default {
       }
     }
   }
-  @media only screen and (max-width: 480px) {
+  @media screen and (max-width: 480px) {
     .home__title {
       font-size: 2.3rem;
     }

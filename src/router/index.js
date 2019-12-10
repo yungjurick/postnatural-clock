@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import ClockAnimal from '../views/ClockAnimals'
-import ClockWaste from '../views/ClockWaste'
+import SelectAnimals from '../views/SelectAnimals.vue'
 
 Vue.use(VueRouter)
 
@@ -13,14 +13,21 @@ const routes = [
     component: Home
   },
   {
-    path: '/clock-animals',
-    name: 'clock-animals',
-    component: ClockAnimal
+    path: '/select-animals',
+    name: 'select-animals',
+    component: SelectAnimals
   },
   {
-    path: '/clock-waste',
-    name: 'clock-waste',
-    component: ClockWaste
+    path: '/clock-animals',
+    name: 'clock-animals',
+    component: ClockAnimal,
+    beforeEnter: (to, from, next) => {
+      if (from.name === 'select-animals') {
+        next();
+      } else {
+        next('/select-animals');
+      }
+    }
   },
   {
     path: '/about',

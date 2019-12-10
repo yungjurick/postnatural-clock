@@ -4,8 +4,8 @@
     <h1 to='/clock' class="home__title">Weight of Time</h1>
     <p class="home__subtitle">Based on Human Perception of Time</p>
     <div class="home__container">
-      <router-link class="home__container__link" to='/clock-animals'>Animals</router-link>
-      <router-link class="home__container__link" to='/clock-waste'>Waste</router-link>
+      <router-link class="home__container__link" to='/select-animals'>Animals</router-link>
+      <router-link class="home__container__link" to='/plastic-bottle'>Plastic Bottle</router-link>
     </div>
   </div>
 </template>
@@ -22,8 +22,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     &__title {
       font-size: 4rem;
       font-family: 'Roboto Mono', monospace;

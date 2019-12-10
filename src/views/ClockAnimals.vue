@@ -1,19 +1,16 @@
 <template>
   <div class="clock">
     <div class="clock__top clock__section">
-      <div class="clock__section__time">
-        <h1 class="clock__label">Mouse</h1>
+      <div
+        v-for="(animal, index) in animalsList.slice(0, 2)"
+        :key="index"
+        class="clock__section__time"
+      >
+        <h1 class="clock__label">{{ animal.name }}</h1>
         <p>
-          {{ `${padHour(mouseTime.hour)} : ${padMinuteAndSecond(mouseTime.minute)} : ${padMinuteAndSecond(mouseTime.second)}` }}
+          {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
         </p>
-        <img class="clock__animal" src="@/assets/mouse.png">
-      </div>
-      <div class="clock__section__time">
-        <h1 class="clock__label">Dog</h1>
-        <p>
-          {{ `${padHour(dogTime.hour)} : ${padMinuteAndSecond(dogTime.minute)} : ${padMinuteAndSecond(dogTime.second)}` }}
-        </p>
-        <img class="clock__animal" src="@/assets/dog.png">
+        <img class="clock__animal" :src="animal.src">
       </div>
     </div>
     <div class="clock__middle clock__section">
@@ -26,19 +23,16 @@
       </div>
     </div>
     <div class="clock__bottom clock__section">
-      <div class="clock__section__time">
-        <h1 class="clock__label">Tortoise</h1>
+      <div
+        v-for="(animal, index) in animalsList.slice(2)"
+        :key="index"
+        class="clock__section__time"
+      >
+        <h1 class="clock__label">{{ animal.name }}</h1>
         <p>
-          {{ `${padHour(tortoiseTime.hour)} : ${padMinuteAndSecond(tortoiseTime.minute)} : ${padMinuteAndSecond(tortoiseTime.second)}` }}
+          {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
         </p>
-        <img class="clock__animal" src="@/assets/tortoise.png">
-      </div>
-      <div class="clock__section__time">
-        <h1 class="clock__label">Whale</h1>
-        <p>
-          {{ `${padHour(whaleTime.hour)} : ${padMinuteAndSecond(whaleTime.minute)} : ${padMinuteAndSecond(whaleTime.second)}` }}
-        </p>
-        <img class="clock__animal" src="@/assets/whale.png">
+        <img class="clock__animal" :src="animal.src">
       </div>
     </div>
   </div>
@@ -49,73 +43,91 @@ export default {
   name: 'Clock',
   data() {
     return {
+      animalsList: [],
       humanTime: {
         hour: 0,
         minute: 0,
-        second: 0
-      },
-      dogTime: {
-        hour: 0,
-        minute: 0,
-        second: 0
-      },
-      mouseTime: {
-        hour: 0,
-        minute: 0,
-        second: 0
-      },
-      tortoiseTime: {
-        hour: 0,
-        minute: 0,
-        second: 0
-      },
-      whaleTime: {
-        hour: 0,
-        minute: 0,
-        second: 0
+        second: 0,
+        day: 0,
+        year: 0,
+        cycle: 0
       }
     }
   },
   mounted() {
-    setInterval(() => {
-      this.humanTime = this.updateTime(this.humanTime);
-    }, 1000);
+    console.log("Mounted")
+    // Pull Data from Vuex Store
+    this.humanTime = this.$store.state.humanTime;
+    this.animalsList = this.$store.state.selectedAnimals.map(animal => {
+      return {
+        ...animal,
+        time: {
+          hour: 0,
+          minute: 0,
+          second: 0,
+          day: 0,
+          year: 0,
+          cycle: 0
+        }
+      }
+    })
 
-    setInterval(() => {
-      this.dogTime = this.updateTime(this.dogTime);
-    }, 1000 / 7.2);
+    // Sort the List in order of highest numerator (lower life expenctancy)
+    this.animalsList.sort((a, b) =>  b.numerator - a.numerator);
 
-    setInterval(() => {
-      this.tortoiseTime = this.updateTime(this.tortoiseTime);
-    }, 1000 / 0.72);
+    // Start the Timer
 
+    // Human
     setInterval(() => {
-      this.whaleTime = this.updateTime(this.whaleTime);
-    }, 1000 / 0.36);
+        this.humanTime = this.updateTime(this.humanTime);
+      }, 1000);
 
-    setInterval(() => {
-      this.mouseTime = this.updateTime(this.mouseTime);
-    }, 1000 / 36);
+    // // Animals
+    // for (let i = 0; i < this.animalsList.length; i++) {
+    //   setInterval(() => {
+    //     this.animalsList[0].time = this.updateTime(this.animalsList[0].time);
+    //   }, 1000 / this.animalsList[0].numerator);
+    // }
+
   },
   methods: {
     updateTime(time) {
-      let { hour, minute, second } = time;
+      let { hour, minute, second, day, year, cycle } = time;
       // Increment second
-      second += 1;
+      second++;
 
       if (second == 60) {
-        minute += 1;
+        minute++;
         second = 0;
       }
 
       if (minute == 60) {
-        hour += 1;
+        hour++;
         minute = 0;
       }
+
+      if (hour == 24) {
+        day++;
+        hour = 0;
+      }
+
+      if (day == 365) {
+        year++;
+        day = 0;
+      }
+
+      if (year == 72) {
+        cycle++;
+        year = 0;
+      }
+
       return {
         hour,
         minute,
-        second
+        second,
+        day,
+        year,
+        cycle
       }
     },
     padHour(hour) {
@@ -130,8 +142,8 @@ export default {
 
 <style lang="scss">
 .clock {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;

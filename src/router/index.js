@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import ClockAnimal from '../views/ClockAnimals'
 import SelectAnimals from '../views/SelectAnimals.vue'
 
+import store from '../store/index.js'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -22,7 +24,7 @@ const routes = [
     name: 'clock-animals',
     component: ClockAnimal,
     beforeEnter: (to, from, next) => {
-      if (from.name === 'select-animals') {
+      if (from.name === 'select-animals' && store.state.selectedAnimals.length !== 0) {
         next();
       } else {
         next('/select-animals');

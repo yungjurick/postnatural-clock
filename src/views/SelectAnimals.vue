@@ -50,14 +50,16 @@
             </p>
             <p :class="{'option-clicked' : selectedDatePreference === 'date'}">
               <span @click="setDatePreference('date')">Start From Year</span>
-              <input
-                v-if="selectedDatePreference === 'date'"
-                v-model="selectedYear"
-                min="1920"
-                max="2020"
-                type="number"
-                class="select-animals__modal__container__selects--input"
-              >
+              <span class="select-animals__modal__container__selects--span">
+                <input
+                  v-if="selectedDatePreference === 'date'"
+                  v-model="selectedYear"
+                  min="1920"
+                  max="2020"
+                  type="number"
+                  class="select-animals__modal__container__selects--input"
+                >
+              </span>
             </p>
           </div>
           <div class="select-animals__modal__container__buttons">
@@ -286,6 +288,9 @@ export default {
         p + p {
           margin-top: 32px;
         }
+        &--span {
+          border-bottom: 1.5px solid white;
+        }
         &--input {
           width: 100px !important;
           line-height: 1.5;
@@ -296,7 +301,6 @@ export default {
           padding: 0 6px;
           font-size: 1.3rem;
           text-align: center;
-          border-bottom: 1.5px solid white;
           background-color: transparent;
           color: white; 
           &:focus {

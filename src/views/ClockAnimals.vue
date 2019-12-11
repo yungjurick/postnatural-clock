@@ -91,15 +91,11 @@ export default {
 
       const timeFrom = this.$moment(new Date(selectedYear, 0, 1));
 
-      console.log(timeFrom);
-
       // Get the difference in miliseconds as duration
       const diff = this.$moment().diff(timeFrom, 'milliseconds');
 
       // Parse the seconds according to the human time
       this.humanTime = this.parseTime(diff);
-
-      console.log(this.humanTime);
 
       // Parse the seconds according to the numerator for each animals
       this.animalsList = this.animalsList.map(animal => {
@@ -312,6 +308,7 @@ export default {
 }
 @media screen and (max-width: 480px) {
   .clock {
+    height: 100%;
     &__section {
       &__middle {
         &__subtitle {
@@ -332,13 +329,26 @@ export default {
       font-size: 0.4rem;
     }
     &__label {
-      font-size: 0.8rem;
+      font-size: 0.5rem;
       width: auto;
       left: 20%;
       transform: translateX(-80%);
     }
     &__animal {
       height: 25px;
+    }
+    &__top {
+    height: 40%;
+    background: white;
+    }
+    &__middle {
+      height: 20%;
+      background: black;
+      color: white;
+    }
+    &__bottom {
+      height: 40%;
+      background: white;
     }
   }
 }

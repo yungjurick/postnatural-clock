@@ -9,6 +9,19 @@
 <style lang="scss">
 @import '@/styles/reset.scss';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap');
+html, body {
+  height: 100%;
+  width: 100%;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+  input:focus, textarea:focus, select:focus{
+    outline: none !important;
+  }
+  input, optgroup, select, textarea {
+    -webkit-appearance: none !important;
+  }
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

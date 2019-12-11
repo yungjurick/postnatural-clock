@@ -20,14 +20,14 @@ const routes = [
   {
     path: '/clock-animals',
     name: 'clock-animals',
-    component: ClockAnimal,
-    beforeEnter: (to, from, next) => {
-      if (from.name === 'select-animals') {
-        next();
-      } else {
-        next('/select-animals');
-      }
-    }
+    component: ClockAnimal
+    // beforeEnter: (to, from, next) => {
+    //   if (from.name === 'select-animals') {
+    //     next();
+    //   } else {
+    //     next('/select-animals');
+    //   }
+    // }
   },
   {
     path: '/about',

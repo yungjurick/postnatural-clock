@@ -136,11 +136,16 @@ export default new Vuex.Store({
       day: 0,
       year: 0,
       cycle: 0
-    }
+    },
+    timePreference: {}
+
   },
   mutations: {
     SET_SELECTED_ANIMALS(state, payload) {
       state.selectedAnimals = payload;
+    },
+    SET_TIME_PREFERENCE(state, payload) {
+      state.timePreference = payload;
     }
   }
 })

@@ -7,7 +7,7 @@
         <strong style="font-weight: bold">4</strong>
         Animals - Click 
         <span
-          @click="navigateToTimer()"
+          @click="openModal"
           :class="{ 'activate-link' : this.checkedCount === 4 }"
           class="select-animals__container__link"
         >Proceed</span> 
@@ -27,7 +27,6 @@
             class="select-animals__container__gallery__item__img"
           />
           <p
-            :class="{ 'checked-animal' : animal.checked }"
             class="select-animals__container__gallery__item__name"
           >
             {{ animal.name }}
@@ -35,33 +34,46 @@
         </div>
       </div>
     </div>
-    <!-- Date Prompt Modal -->
-    <div v-show="isModalOpen" class="select-animals__modal">
-      <div class="select-animals__modal__container">
-        <h1 class="select-animals__modal__container__title">Select a Start Date</h1>
-        <div class="select-animals__modal__container__selects">
-          <p>From Now</p>
-          <p>
-            From Year
-            <span><input type="number" /></span>
-          </p>
-        </div>
-        <div class="select-animals__modal__container__buttons">
-          <button
-            :class="{'line-through' : !canProceed }"
-            class="select-animals__modal__container__buttons--proceed"
-          >
-            Proceed
-          </button>
-          <button
-            @click="isModalOpen = !isModalOpen"
-            class="select-animals__modal__container__buttons--back"
-          >
-            Go Back
-          </button>
+    <transition name="fade" mode="out-in">
+      <!-- Date Prompt Modal -->
+      <div v-show="isModalOpen" class="select-animals__modal">
+        <div class="select-animals__modal__container">
+          <h1 class="select-animals__modal__container__title">Select a Start Date</h1>
+          <p class="select-animals__modal__container__subtitle">For year, the timer starts from January 1st of the selected year<br><br>(between 1920 - 2019)</p>
+          <div class="select-animals__modal__container__selects">
+            <p :class="{'option-clicked' : selectedDatePreference === 'now'}" @click="setDatePreference('now')">
+              <span>• From Now</span>
+            </p>
+            <p :class="{'option-clicked' : selectedDatePreference === 'date'}">
+              <span @click="setDatePreference('date')">• From Year</span>
+              <input
+                v-if="selectedDatePreference === 'date'"
+                v-model="selectedYear"
+                min="1920"
+                max="2020"
+                type="number"
+                class="select-animals__modal__container__selects--input"
+              >
+            </p>
+          </div>
+          <div class="select-animals__modal__container__buttons">
+            <button
+              @click="navigateToTimer()"
+              :class="{'line-through' : !canProceed }"
+              class="select-animals__modal__container__buttons--proceed"
+            >
+              Proceed
+            </button>
+            <button
+              @click="isModalOpen = !isModalOpen"
+              class="select-animals__modal__container__buttons--back"
+            >
+              Go Back
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -76,11 +88,17 @@ export default {
       underlineTop: false,
       isModalOpen: false,
       selectedDatePreference: '',
-      selectedYear: 0
+      selectedYear: ''
     }
   },
   mounted() {
+    // Initialize store with default value
     this.$store.commit('SET_SELECTED_ANIMALS', [])
+    this.$store.commit('SET_TIME_PREFERENCE', {
+      selectedDatePreference: '',
+      selectedYear: '',
+    })
+
     this.animalsList = this.$store.state.animals.map(animal => {
       return {
         ...animal,
@@ -89,13 +107,22 @@ export default {
       }
     })
   },
+  watch: {
+    selectedYear(val) {
+      if (val < 0) {
+        this.selectedYear = 0
+      } else if (val > 2019) {
+        this.selectedYear = 2019
+      }
+    }
+  },
   computed: {
     selectedAnimals() {
       return this.selectedAnimalsList.map(selected => selected.name).join(', ')
     },
     canProceed() {
       if (
-        this.selectedDatePreference !== '' &&
+        this.selectedDatePreference === 'now' ||
         this.selectedYear > 1920 &&
         this.selectedYear < 2020
       ) {
@@ -116,10 +143,27 @@ export default {
         this.selectedAnimalsList = this.selectedAnimalsList.filter(selected => selected.name !== animal.name)
       }
     },
+    openModal() {
+      if (this.checkedCount == 4) {
+        this.isModalOpen = !this.isModalOpen;
+      }
+    },
     navigateToTimer() {
-      this.$store.commit('SET_SELECTED_ANIMALS', this.selectedAnimalsList);
-      this.isModalOpen = !this.isModalOpen;
-      // this.$router.push('/clock-animals')
+      const { selectedDatePreference, selectedYear } = this;
+      if (this.canProceed) {
+        this.$store.commit('SET_SELECTED_ANIMALS', this.selectedAnimalsList);
+        this.$store.commit('SET_TIME_PREFERENCE', { selectedDatePreference, selectedYear });
+        this.isModalOpen = !this.isModalOpen;
+        this.$router.push('/clock-animals');
+      }
+    },
+    setDatePreference(choice) {
+      this.selectedYear = null;
+      if (choice !== this.selectedDatePreference) {
+        this.selectedDatePreference = choice;
+      } else {
+        this.selectedDatePreference = '';
+      }
     }
   }
 }
@@ -165,14 +209,14 @@ export default {
         align-items: center;
         flex-direction: column;
         height: 200px;
-        transition: 0.3s all;
+        transition: 0.2s all;
         border: 1px solid transparent;
         &__img {
           cursor: pointer;
           height: 35%;
         }
         &__name {
-          transition: all 0.3s;
+          padding: 4px 10px;
           margin-top: 20px;
         }
       }
@@ -192,7 +236,7 @@ export default {
       justify-content: center;
       flex-direction: column;
       align-items: center;
-      height: 50%;
+      height: auto;
       width: auto;
       &__title {
         font-size: 2.5rem;
@@ -201,24 +245,54 @@ export default {
         color: white;
         padding: 6px 12px;
       }
+      &__subtitle {
+        font-size: 0.7rem;
+        margin-top: 15px;
+      }
       &__selects {
-        width: auto;
+        width: 50%;
         margin-top: 60px;
         display: flex;
         flex-direction: column;
         text-align: left;
         p {
-          cursor: pointer;
-          transition: 0.2s all;
+          display: flex;
+          align-items: center;
+          height: 42px;
+          transition: 0.1s all;
           padding: 6px 12px;
           font-size: 1.3rem;
-          &:hover {
-            background-color: rgba(54, 56, 76, 0.7);
-            color: white;
+        }
+        p:first-child {
+          cursor: pointer;
+        }
+        p:last-child {
+          justify-content: space-between;
+          span {
+            cursor: pointer;
           }
         }
         p + p {
           margin-top: 32px;
+        }
+        &--input {
+          font-weight: bold;
+          border: none;
+          font-family: 'Roboto Mono', monospace;
+          padding: 0 6px;
+          font-size: 1.3rem;
+          text-align: center;
+          border-bottom: 1.5px solid white;
+          background-color: transparent;
+          color: white; 
+          &:focus {
+            outline: none;
+          }
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
         }
       }
       &__buttons {
@@ -231,12 +305,13 @@ export default {
           font-family: 'Roboto Mono', monospace;
           font-size: 1.1rem;
           padding: 6px 30px;
+          cursor: pointer;
+          &:focus {
+            outline: none;
+          }
         }
         button + button {
           margin-left: 15%;
-        }
-        &--back {
-          cursor: pointer;
         }
         &--proceed {
           transition: 0.1s all;
@@ -278,8 +353,13 @@ export default {
   background-color: #36384C;
   cursor: pointer;
 }
+.option-clicked {
+  background-color: rgba(54, 56, 76, 0.7);
+  color: white;
+}
 .line-through {
+  color: rgb(54, 56, 76, 0.2);
   text-decoration: line-through;
-  cursor: default;
+  cursor: default !important;
 }
 </style>

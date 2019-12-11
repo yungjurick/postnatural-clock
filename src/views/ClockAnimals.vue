@@ -7,9 +7,13 @@
         class="clock__section__time"
       >
         <h1 class="clock__label">{{ animal.name }}</h1>
-        <p>
-          {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
-        </p>
+        <div class="clock__section__middle">
+          <p class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
+          <p class="clock__section__middle__digits">
+            {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
+          </p>
+          <p class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetimes</p>
+        </div>
         <img class="clock__animal" :src="animal.src">
       </div>
     </div>
@@ -19,7 +23,7 @@
           {{ `${padHour(humanTime.hour)} : ${padMinuteAndSecond(humanTime.minute)} : ${padMinuteAndSecond(humanTime.second)}` }}
         </p>
         <p class="clock__section__time__subtitle">The Human Timer</p>
-        <p class="clock__type">Animals</p>
+        <p class="clock__type">{{ humanTime.year }} Years and {{ humanTime.day }} Days</p>
       </div>
     </div>
     <div class="clock__bottom clock__section">
@@ -29,9 +33,13 @@
         class="clock__section__time"
       >
         <h1 class="clock__label">{{ animal.name }}</h1>
-        <p>
-          {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
-        </p>
+        <div class="clock__section__middle">
+          <p class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
+          <p class="clock__section__middle__digits">
+            {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
+          </p>
+          <p class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetime</p>
+        </div>
         <img class="clock__animal" :src="animal.src">
       </div>
     </div>
@@ -55,8 +63,8 @@ export default {
     }
   },
   mounted() {
-    console.log("Mounted")
     // Pull Data from Vuex Store
+    const { selectedDatePreference, selectedYear } = this.$store.state.timePreference
     this.humanTime = this.$store.state.humanTime;
     this.animalsList = this.$store.state.selectedAnimals.map(animal => {
       return {
@@ -72,22 +80,55 @@ export default {
       }
     })
 
+    // Modify Data based on Selected Date Preference, do nothing if is not 'date'
+    if (selectedDatePreference === 'date') {
+      const timeFrom = this.$moment(new Date(selectedYear, 0, 1));
+
+      // Get the difference in miliseconds as duration
+      const diff = this.$moment().diff(timeFrom, 'milliseconds');
+
+      // Parse the seconds according to the human time
+      this.humanTime = this.parseTime(diff);
+
+      // Parse the seconds according to the numerator for each animals
+      this.animalsList = this.animalsList.map(animal => {
+        const updatedTimeObj = this.parseTime(diff * animal.numerator);  
+
+        return {
+          ...animal,
+          time: updatedTimeObj
+        }
+      })
+    } 
+
     // Sort the List in order of highest numerator (lower life expenctancy)
     this.animalsList.sort((a, b) =>  b.numerator - a.numerator);
 
-    // Start the Timer
+    // -- Start the Timer --
 
     // Human
     setInterval(() => {
-        this.humanTime = this.updateTime(this.humanTime);
-      }, 1000);
+      this.humanTime = this.updateTime(this.humanTime);
+    }, 1000);
 
-    // // Animals
-    // for (let i = 0; i < this.animalsList.length; i++) {
-    //   setInterval(() => {
-    //     this.animalsList[0].time = this.updateTime(this.animalsList[0].time);
-    //   }, 1000 / this.animalsList[0].numerator);
-    // }
+    if (this.animalsList) {
+      // Animals
+      setInterval(() => {
+        this.animalsList[0].time = this.updateTime(this.animalsList[0].time);
+      }, 1000 / this.animalsList[0].numerator);
+
+      setInterval(() => {
+        this.animalsList[1].time = this.updateTime(this.animalsList[1].time);
+      }, 1000 / this.animalsList[1].numerator);
+
+      setInterval(() => {
+        this.animalsList[2].time = this.updateTime(this.animalsList[2].time);
+      }, 1000 / this.animalsList[2].numerator);
+
+      setInterval(() => {
+        this.animalsList[3].time = this.updateTime(this.animalsList[3].time);
+      }, 1000 / this.animalsList[3].numerator);
+    }
 
   },
   methods: {
@@ -135,6 +176,40 @@ export default {
     },
     padMinuteAndSecond(time) {
       return time < 10 ? '0' + time : time;
+    },
+    parseTime(diff) {
+      // Wrap diff with moment.js duration
+      const duration = this.$moment.duration(diff);
+
+      // Get seconds, minutes, hours, and years from the duration
+      const second = duration.seconds();
+      const minute = duration.minutes();
+      const hour = duration.hours();
+      const year = duration.years();
+
+      // Create temp to get days
+      const temp = this.$moment.duration({
+        second,
+        minute,
+        hour,
+        year
+      });
+
+      // Get days by subtracting the retrieved seconds, minutes, hours, and years from the original duration
+      // and convert it into days. Floor the value to get rid of decimal points.
+      const day = Math.floor(duration.subtract(temp).asDays());
+
+      const cycle = Math.floor(year / 72);
+      const yearSubCycle = year - (cycle * 72);
+
+      return {
+        second,
+        minute,
+        hour,
+        day,
+        year: yearSubCycle,
+        cycle
+      }
     }
   }
 }
@@ -154,6 +229,26 @@ export default {
   &__section {
     flex: 1 0 100%;
     width: 100%;
+    &__middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      &__subtitle {
+        color: #2c3e5088;
+        font-size: 0.9rem;
+        &:first-child {
+          text-align: left;
+          // padding-left: 6px;
+        }
+        &:last-child {
+          text-align: right;
+        }
+      }
+      &__digits {
+        margin: 8px 0;
+      }
+    }
     &__time {
       font-family: 'Roboto Mono', monospace;
       font-size: 3rem;
@@ -169,16 +264,16 @@ export default {
     }
   }
   &__top {
-    height: 35%;
+    height: 37%;
     background: white;
   }
   &__middle {
-    height: 30%;
+    height: 26%;
     background: black;
     color: white;
   }
   &__bottom {
-    height: 35%;
+    height: 37%;
     background: white;
   }
   &__animal {

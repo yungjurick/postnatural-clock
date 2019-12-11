@@ -5,8 +5,8 @@
     <p class="home__subtitle">Based on Human Perception of Time</p>
     <p class="home__subtitle home__subtitle__small">1 Human Second = "?" Animal Second</p>
     <div class="home__container">
-      <router-link class="home__container__link" to='/select-animals'>Animals</router-link>
-      <router-link class="home__container__link" to='/plastic-bottle'>Plastic Bottle</router-link>
+      <router-link class="home__container__link" to='/select-animals'>Enter</router-link>
+      <!-- <router-link class="home__container__link" to='/plastic-bottle'>Plastic Bottle</router-link> -->
     </div>
   </div>
 </template>

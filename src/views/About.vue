@@ -7,47 +7,67 @@
         A second as a second for humans, a minute as a minute for humans, and an hour as an hour for humans.
       </p>
       <p class="about__text"> 
-        Then, what would be the weight of time for other animals - such as a mouse, a dog, a tortoise, and a whale, or
-        even waste? These are just a few of the many selections, but what would it be like to see their time through 
-        the perception of human time? What would our 1 second, 1 minute, or 1 hour be equivalent for this animals and waste?
-        Since, we understand and sympathize with things better when put under the perspective of a human scope, this timer will help you.
+        Then, what would be the weight of time for other animals - such as a mouse, a dog, a tortoise, or a whale? 
+        These are just a few of the many selections I have curated, but what would it be like to see their time through 
+        the perception of human time? What would our 1 second, 1 minute, or 1 hour be equivalent for these animals?
+        Since, we understand and sympathize with things better when put under the perspective of a human scope,
+        this timer, clock, or stopwatch will help you.
       </p>
       <p class="about__text"> 
-        Based on the average lifespan of these animals (including humans) and the time it takes these waste
-        to decompose, this timer tries to portray how their time be portrayed through a human perspective.
-        For instance, 1 second of human time would be 7 seconds for a dog if their time was to be reinterpreted
-        in human perception of time.
+        Based on the average lifespan of these animals (including humans), this timer tries to portray how their time 
+        be portrayed through a human perspective. For instance, 1 second of human time would be 7 seconds for a dog if 
+        their time was to be reinterpreted in human perception of time.
       </p>
       <br>
       <p class="about__text strong"> 
         In this piece, the average human lifespan is 72 Years. So, the rates of time increment for other specimens are inferred from converting
-        their lifespan to fit the average human lifespan.
+        their lifespan to fit the average human lifespan. This means that one lifetime is equivalent to 72 years.
       </p>
       <br>
       <p class="about__text"> 
-        Credits for the average lifespan of animals & waste (including human):
+        Credits for the average lifespans:
       </p>
       <p class="about__text citing">
-        <a href="http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans">Whale&Tortoise</a>
+        <a href="http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans">Whale</a>
+        <a href="http://www.vetstreet.com/our-pet-experts/7-animals-with-incredibly-long-life-spans">Tortoise</a>
         <a href="https://www.earthkind.com/blog/how-long-do-mice-live/">Mouse</a>
         <a href="https://www.who.int/gho/mortality_burden_disease/life_tables/situation_trends/en/">Human</a>
-        <a href="https://www.petmd.com/dog/wellness/evr_dg_how_long_do_dogs_live">Dog</a>
-        <a href="https://www.thebalancesmb.com/how-long-does-it-take-garbage-to-decompose-2878033">Waste</a>
+        <a href="https://www.petmd.com/dog/wellness/evr_dg_how_long_do_dogs_live">Dog</a><br>
+        <a href="https://tpwd.texas.gov/publications/nonpwdpubs/young_naturalist/animals/animal_life_spans/">Everything else</a>
       </p>
       <br>
       <p class="about__text"> 
         Data used for average lifespan:
       </p>
       <p class="about__text"> 
-        Orange Peel - 6 Months (0.5 Years)<br>
-        Mice - 2 Years<br>
-        Milk Cartons - 5 Years<br>
-        Dog - 10 Years<br>
         Human - 72 Years<br>
+        Mice - 2 Years<br>
+        Dog - 10 Years<br>
         Tortoise (Giant Tortoise) - 100 Years <br>
         Batteries - 100 Years<br>
         Whale (Bowhead Whale) - 200 Years<br>
         Plastic Bottle - 450 Years<br>
+        Golden Eagle - 80 Years<br>
+        Canada goose - 32 Years<br>
+        Pelican - 52 Years<br>
+        Pigeon - 35 Years<br>
+        Seahorse - 6 Years<br>
+        Horse - 50 Years<br>
+        Giraffe - 28 Years<br>
+        Chimpanzee - 50 Years<br>
+        Camel - 40 Years<br>
+        Grizzly Bear - 34 Years<br>
+        Rabbit - 10 Years<br>
+        Sparrow - 20 Years<br>
+        Turkey - 15 Years<br>
+        Fox - 14 Years<br>
+        Lion - 35 Years<br>
+        Porcupine - 20 Years<br>
+        Rhinoceros - 40 Years<br>
+        Zebra - 30 Years<br>
+        Dove - 12 Years<br>
+        Chameleon - 3.5 Years<br>
+        Seal - 30 Years<br>
       </p>
       <p class="about__text"> 
         Credits for the Icons used in this website (they are all from Noun Project):
@@ -102,8 +122,11 @@ export default {
         margin-left: 12px;
         color: #36383c;
       }
+      a {
+        color: #36383c !important;
+      }
       a:visited{
-        color: #36383c;
+        color: #36383c !important;
       }
   }
   &__title {

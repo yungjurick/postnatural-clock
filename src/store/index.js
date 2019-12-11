@@ -30,102 +30,102 @@ export default new Vuex.Store({
       {
         name: 'Golden Eagle',
         numerator: 2.25,
-        src: require('../assets/dog.png')
+        src: require('../assets/golden-eagle.png')
       },
       {
         name: 'Pelican',
         numerator: 1.385,
-        src: require('../assets/dog.png')
+        src: require('../assets/pelican.png')
       },
       {
         name: 'Pigeon',
         numerator: 2.06,
-        src: require('../assets/dog.png')
+        src: require('../assets/pigeon.png')
       },
       {
         name: 'Sea Horse',
         numerator: 12,
-        src: require('../assets/dog.png')
+        src: require('../assets/sea-horse.png')
       },
       {
         name: 'Horse',
         numerator: 1.44,
-        src: require('../assets/dog.png')
+        src: require('../assets/horse.png')
       },
       {
         name: 'Giraffe',
         numerator: 2.57,
-        src: require('../assets/dog.png')
+        src: require('../assets/giraffe.png')
       },
       {
         name: 'Chimpanzee',
         numerator: 1.44,
-        src: require('../assets/dog.png')
+        src: require('../assets/chimpanzee.png')
       },
       {
         name: 'Camel',
         numerator: 1.8,
-        src: require('../assets/dog.png')
+        src: require('../assets/camel.png')
       },
       {
         name: 'Grizzly Bear',
         numerator: 2.118,
-        src: require('../assets/dog.png')
+        src: require('../assets/bear.png')
       },
       {
         name: 'Rabbit',
         numerator: 7.2,
-        src: require('../assets/dog.png')
+        src: require('../assets/rabbit.png')
       },
       {
         name: 'Sparrow',
         numerator: 3.6,
-        src: require('../assets/dog.png')
+        src: require('../assets/sparrow.png')
       },
       {
         name: 'Turkey',
         numerator: 4.8,
-        src: require('../assets/dog.png')
+        src: require('../assets/turkey.png')
       },
       {
         name: 'Fox',
         numerator: 5.143,
-        src: require('../assets/dog.png')
+        src: require('../assets/fox.png')
       },
       {
         name: 'Lion',
         numerator: 2.06,
-        src: require('../assets/dog.png')
+        src: require('../assets/lion.png')
       },
       {
         name: 'Porcupine',
         numerator: 3.6,
-        src: require('../assets/dog.png')
+        src: require('../assets/porcupine.png')
       },
       {
         name: 'Rhinoceros',
         numerator: 1.8,
-        src: require('../assets/dog.png')
+        src: require('../assets/rhinoceros.png')
       },
       {
         name: 'Zebra',
         numerator: 2.4,
-        src: require('../assets/dog.png')
+        src: require('../assets/zebra.png')
       },
       {
         name: 'Dove',
         numerator: 6,
-        src: require('../assets/dog.png')
+        src: require('../assets/dove.png')
       },
       {
         name: 'Chameleon',
         numerator: 20.572,
-        src: require('../assets/dog.png')
+        src: require('../assets/chameleon.png')
       },
       {
         name: 'Seal',
         numerator: 2.4,
-        src: require('../assets/dog.png')
+        src: require('../assets/seal.png')
       }
     ],
     selectedAnimals: [],

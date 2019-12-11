@@ -54,13 +54,21 @@
       </p>
       <p class="about__text citing">
         Mouse - zidney<br>
-        Dog - Saeful Muslim<br>
+        Dog, Rhinoceros, Giraffe - Saeful Muslim<br>
         Turtle - Nook Fulloption<br>
         Whale - Ben Davis<br>
-        Orange Peel - NAMI A<br>
-        Milk Carton - Stonehub<br>
-        Battery - newstudiodesign10<br>
-        Plastic Bottle - Treat Boy<br>
+        Seal - Victoruler<br>
+        Chameleon - Valerie Lamm<br>
+        Dove - priyanka<br>
+        Zebra, Lion, Fox, Camel, Horse - Iconic<br>
+        Porcupine, Sparrow - Georgiana Ionescu<br>
+        Turkey - Laymik<br>
+        Rabbit - monkik<br>
+        Bear - Vertigophase<br>
+        Chimpanzee, Eagle - Icons Producer<br>
+        Sea Horse - Visual Glow<br>
+        Pigeon - Eleanor Bell<br>
+        Pelican - Arunika
       </p>
       <br>
       <br>

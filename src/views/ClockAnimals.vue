@@ -8,22 +8,26 @@
       >
         <h1 class="clock__label">{{ animal.name }}</h1>
         <div class="clock__section__middle">
-          <p class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
+          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetimes</p>
+          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
           <p class="clock__section__middle__digits">
             {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
           </p>
-          <p class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetimes</p>
         </div>
         <img class="clock__animal" :src="animal.src">
       </div>
     </div>
     <div class="clock__middle clock__section">
       <div class="clock__section__time">
-        <p class="clock__section__time__digit">
-          {{ `${padHour(humanTime.hour)} : ${padMinuteAndSecond(humanTime.minute)} : ${padMinuteAndSecond(humanTime.second)}` }}
-        </p>
-        <p class="clock__section__time__subtitle">The Human Timer</p>
-        <p class="clock__type">{{ humanTime.year }} Years and {{ humanTime.day }} Days</p>
+        <div class="clock__section__middle">
+          <p v-if="showHidden" class="clock__type">{{ humanTime.cycle }} Lifetimes</p>
+          <p v-if="showHidden" class="clock__type">{{ humanTime.year }} Years and {{ humanTime.day }} Days</p>
+          <p class="clock__section__time__digits">
+            {{ `${padHour(humanTime.hour)} : ${padMinuteAndSecond(humanTime.minute)} : ${padMinuteAndSecond(humanTime.second)}` }}
+          </p>
+          <p class="clock__section__time__subtitle">The Human Timer</p>
+          <!-- <p class="clock__small">1 Lifetime = 72 Years</p> -->
+        </div>
       </div>
     </div>
     <div class="clock__bottom clock__section">
@@ -34,11 +38,11 @@
       >
         <h1 class="clock__label">{{ animal.name }}</h1>
         <div class="clock__section__middle">
-          <p class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
+          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetime</p>
+          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
           <p class="clock__section__middle__digits">
             {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
           </p>
-          <p class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetime</p>
         </div>
         <img class="clock__animal" :src="animal.src">
       </div>
@@ -51,6 +55,7 @@ export default {
   name: 'Clock',
   data() {
     return {
+      showHidden: false,
       animalsList: [],
       humanTime: {
         hour: 0,
@@ -82,13 +87,19 @@ export default {
 
     // Modify Data based on Selected Date Preference, do nothing if is not 'date'
     if (selectedDatePreference === 'date') {
+      this.showHidden = true;
+
       const timeFrom = this.$moment(new Date(selectedYear, 0, 1));
+
+      console.log(timeFrom);
 
       // Get the difference in miliseconds as duration
       const diff = this.$moment().diff(timeFrom, 'milliseconds');
 
       // Parse the seconds according to the human time
       this.humanTime = this.parseTime(diff);
+
+      console.log(this.humanTime);
 
       // Parse the seconds according to the numerator for each animals
       this.animalsList = this.animalsList.map(animal => {
@@ -226,6 +237,9 @@ export default {
     display: flex;
     flex-direction: column;
   }
+  &__small {
+    font-size: 0.5rem;
+  }
   &__section {
     flex: 1 0 100%;
     width: 100%;
@@ -237,15 +251,11 @@ export default {
       &__subtitle {
         color: #2c3e5088;
         font-size: 0.9rem;
-        &:first-child {
-          text-align: left;
-          // padding-left: 6px;
-        }
-        &:last-child {
-          text-align: right;
-        }
+        text-align: left;
+        margin-bottom: 6px;
       }
       &__digits {
+        font-size: 2.2rem;
         margin: 8px 0;
       }
     }
@@ -259,7 +269,10 @@ export default {
       align-items: center;
       &__subtitle {
         font-size: 1.8rem;
-        margin-top: 12px;
+        margin-top: 6px;
+      }
+      &__digits {
+        margin: 8px 0;
       }
     }
   }
@@ -291,17 +304,32 @@ export default {
     text-align: left;
   }
   &__type {
-    font-weight: bold;
+    text-align: left;
+    // font-weight: bold;
     font-size: 1rem;
-    margin-top: 16px;
+    margin-bottom: 6px;
   }
 }
 @media screen and (max-width: 480px) {
   .clock {
     &__section {
+      &__middle {
+        &__subtitle {
+          font-size: 0.4rem;
+        }
+        &__digits {
+          font-size: 1.3rem;
+        }
+      }
       &__time {
         font-size: 1.3rem;
+        &__subtitle {
+          font-size: 1rem;
+        }
       }
+    }
+    &__type {
+      font-size: 0.4rem;
     }
     &__label {
       font-size: 0.8rem;

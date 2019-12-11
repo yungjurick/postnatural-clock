@@ -1,19 +1,23 @@
 <template>
   <div class="select-animals">
     <div class="select-animals__container">
-      <h1 class="select-animals__container__title">Select Animals For Timer</h1>
-      <small class="select-animals__container__small">
+      <h1 class="select-animals__container__title">
+        <span class="select-animals__container__title--span">
+          Select Animals For Timer
+        </span>
+      </h1>
+      <p class="select-animals__container__small">
         Select 
         <strong style="font-weight: bold">4</strong>
-        Animals - Click 
+        Animals<br><br>Click 
         <span
           @click="openModal"
           :class="{ 'activate-link' : this.checkedCount === 4 }"
           class="select-animals__container__link"
         >Proceed</span> 
         to Create Your Timer
-      </small>
-      <p class="select-animals__container__selected">{{ selectedAnimals }}</p>
+      </p>
+      <p class="select-animals__container__selected"><span>{{ selectedAnimals }}</span></p>
       <div class="select-animals__container__gallery">
         <div
           v-for="(animal, index) in animalsList"
@@ -38,14 +42,14 @@
       <!-- Date Prompt Modal -->
       <div v-show="isModalOpen" class="select-animals__modal">
         <div class="select-animals__modal__container">
-          <h1 class="select-animals__modal__container__title">Select a Start Date</h1>
+          <h1 class="select-animals__modal__container__title">Select a Start Time</h1>
           <p class="select-animals__modal__container__subtitle">For year, the timer starts from January 1st of the selected year<br><br>(between 1920 - 2019)</p>
           <div class="select-animals__modal__container__selects">
             <p :class="{'option-clicked' : selectedDatePreference === 'now'}" @click="setDatePreference('now')">
-              <span>• From Now</span>
+              <span>Start From Now</span>
             </p>
             <p :class="{'option-clicked' : selectedDatePreference === 'date'}">
-              <span @click="setDatePreference('date')">• From Year</span>
+              <span @click="setDatePreference('date')">Start From Year</span>
               <input
                 v-if="selectedDatePreference === 'date'"
                 v-model="selectedYear"
@@ -123,7 +127,7 @@ export default {
     canProceed() {
       if (
         this.selectedDatePreference === 'now' ||
-        this.selectedYear > 1920 &&
+        this.selectedYear >= 1920 &&
         this.selectedYear < 2020
       ) {
         return true
@@ -184,8 +188,15 @@ export default {
     &__title {
       font-size: 3rem;
       margin-bottom: 30px;
+      &--span {
+        font-weight: bold;
+        color: white;
+        background-color: #36384C;
+        padding: 6px 12px;
+      }
     }
     &__small {
+      margin-top: 60px;
       font-size: 0.9rem;
     }
     &__selected {
@@ -198,7 +209,7 @@ export default {
       transition: 0.3s all;
     }
     &__gallery {
-      margin-top: 10px;
+      margin-top: 20px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       grid-column-gap: 10px;
@@ -242,15 +253,15 @@ export default {
         font-size: 2.5rem;
         font-weight: bold;
         background-color: #36384C;
-        color: white;
         padding: 6px 12px;
+        color: white;
       }
       &__subtitle {
         font-size: 0.7rem;
         margin-top: 15px;
       }
       &__selects {
-        width: 50%;
+        width: 80%;
         margin-top: 60px;
         display: flex;
         flex-direction: column;
@@ -276,6 +287,9 @@ export default {
           margin-top: 32px;
         }
         &--input {
+          width: 100px !important;
+          line-height: 1.5;
+          letter-spacing: 0.3em;
           font-weight: bold;
           border: none;
           font-family: 'Roboto Mono', monospace;
@@ -301,7 +315,8 @@ export default {
         display: flex;
         justify-content: center;
         button {
-          border: 1px solid transparent;
+          background-color: white !important;
+          border: 1px solid white;
           font-family: 'Roboto Mono', monospace;
           font-size: 1.1rem;
           padding: 6px 30px;
@@ -317,24 +332,6 @@ export default {
           transition: 0.1s all;
         }
       }
-    }
-  }
-}
-@media screen and (max-width: 480px) {
-  .select-animals {
-    &__section {
-      &__time {
-        font-size: 1.3rem;
-      }
-    }
-    &__label {
-      font-size: 0.8rem;
-      width: auto;
-      left: 20%;
-      transform: translateX(-80%);
-    }
-    &__animal {
-      height: 25px;
     }
   }
 }
@@ -361,5 +358,98 @@ export default {
   color: rgb(54, 56, 76, 0.2);
   text-decoration: line-through;
   cursor: default !important;
+}
+@media screen and (max-width: 480px) {
+  input[type="number"] {
+    -webkit-appearance: none;
+  }
+  .select-animals {
+    &__container {
+      width: 90%;
+      padding-top: 60px;
+      &__title {
+        font-size: 1.2rem;
+        &--span {
+          padding: 3px 6px;
+        }
+      }
+      &__selected {
+        padding-top: 20px;
+        font-size: 0.7rem;
+      }
+      &__small {
+        margin-top: 30px;
+        font-size: 0.7rem;
+      }
+      &__gallery {
+        margin-top: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-column-gap: 5px;
+        grid-row-gap: 10px;
+        &__item {
+          height: 150px;
+          &__name {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+    &__modal {
+      &__container {
+        &__title {
+          font-size: 1.2rem;
+        }
+        &__subtitle {
+          width: 250px;
+          line-height: 1.8;
+          font-size: 0.8rem;
+        }
+        &__selects {
+          width: 100%;
+          p {
+            font-size: 0.8rem;
+          }
+          p + p {
+            margin-top: 16px;
+          }
+          &--input {
+            width: 75px !important;
+            letter-spacing: 0.3rem;
+            padding: 0 6px;
+            font-size: 0.8rem;
+          }
+        }
+        &__buttons {
+          button {
+            padding: 6px 12px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  .activate-link {
+    padding: 4px 8px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .select-animals {
+    &__container {
+      width: 90%;
+      padding-top: 60px;
+      &__title {
+        font-size: 0.9rem;
+        &--span {
+          padding: 0;
+        }
+      }
+      &__selected {
+        font-size: 0.7rem;
+      }
+      &__small {
+        font-size: 0.7rem;
+      }
+    }
+  }
 }
 </style>

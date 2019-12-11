@@ -3,6 +3,7 @@
     <router-link to='/about' class="home__info">?</router-link>
     <h1 to='/clock' class="home__title">Weight of Time</h1>
     <p class="home__subtitle">Based on Human Perception of Time</p>
+    <p class="home__subtitle home__subtitle__small">1 Human Second = "?" Animal Second</p>
     <div class="home__container">
       <router-link class="home__container__link" to='/select-animals'>Animals</router-link>
       <router-link class="home__container__link" to='/plastic-bottle'>Plastic Bottle</router-link>
@@ -35,6 +36,9 @@ export default {
       margin-top: 3.5%;
       font-size: 1.2rem;
       color: darkgray;
+    }
+    &__subtitle__small {
+      font-size: 0.9rem;
     }
     &__container {
       margin-top: 60px;

@@ -363,10 +363,23 @@ export default {
   text-decoration: line-through;
   cursor: default !important;
 }
-@media screen and (max-width: 480px) {
-  input[type="number"] {
-    -webkit-appearance: none;
+@media screen and (max-width: 1200px) {
+  .select-animals {
+      &__container {
+        width: 80%;
+      }
   }
+}
+@media screen and (max-width: 1024px){
+  .select-animals {
+      &__container {
+        &__title {
+          font-size: 2rem;
+        }
+      }
+  }
+}
+@media screen and (max-width: 610px) {
   .select-animals {
     &__container {
       width: 90%;

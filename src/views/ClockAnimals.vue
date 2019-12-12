@@ -306,6 +306,41 @@ export default {
     margin-bottom: 6px;
   }
 }
+@media screen and (max-width: 1024px){
+  .clock {
+     &__section {
+      &__middle {
+        &__subtitle {
+          font-size: 0.6rem;
+        }
+        &__digits {
+          font-size: 1.5rem;
+        }
+      }
+      &__time {
+        font-size: 1.5rem;
+        &__subtitle {
+          font-size: 1.2rem;
+        }
+        &__digits {
+          font-size: 1.7rem;
+        }
+      }
+    }
+    &__type {
+      font-size: 0.6rem;
+    }
+    &__label {
+      font-size: 1rem;
+      width: auto;
+      left: 20%;
+      transform: translateX(-80%);
+    }
+    &__animal {
+      height: 25px;
+    }
+  }
+}
 @media screen and (max-width: 480px) {
   .clock {
     height: 100%;

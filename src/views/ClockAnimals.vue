@@ -8,7 +8,7 @@
       >
         <h1 class="clock__label">{{ animal.name }}</h1>
         <div class="clock__section__middle">
-          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetimes</p>
+          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetime(s)</p>
           <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
           <p class="clock__section__middle__digits">
             {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}
@@ -20,7 +20,7 @@
     <div class="clock__middle clock__section">
       <div class="clock__section__time">
         <div class="clock__section__middle">
-          <p v-if="showHidden" class="clock__type">{{ humanTime.cycle }} Lifetimes</p>
+          <p v-if="showHidden" class="clock__type">{{ humanTime.cycle }} Lifetime(s)</p>
           <p v-if="showHidden" class="clock__type">{{ humanTime.year }} Years and {{ humanTime.day }} Days</p>
           <p class="clock__section__time__digits">
             {{ `${padHour(humanTime.hour)} : ${padMinuteAndSecond(humanTime.minute)} : ${padMinuteAndSecond(humanTime.second)}` }}
@@ -38,7 +38,7 @@
       >
         <h1 class="clock__label">{{ animal.name }}</h1>
         <div class="clock__section__middle">
-          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetime</p>
+          <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.cycle }} Lifetime(s)</p>
           <p v-if="showHidden" class="clock__section__middle__subtitle">{{ animal.time.year }} Years and {{ animal.time.day || 0 }} Days</p>
           <p class="clock__section__middle__digits">
             {{ `${padHour(animal.time.hour)} : ${padMinuteAndSecond(animal.time.minute)} : ${padMinuteAndSecond(animal.time.second)}` }}

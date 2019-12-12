@@ -44,9 +44,7 @@
         Mice - 2 Years<br>
         Dog - 10 Years<br>
         Tortoise (Giant Tortoise) - 100 Years <br>
-        Batteries - 100 Years<br>
         Whale (Bowhead Whale) - 200 Years<br>
-        Plastic Bottle - 450 Years<br>
         Golden Eagle - 80 Years<br>
         Canada goose - 32 Years<br>
         Pelican - 52 Years<br>

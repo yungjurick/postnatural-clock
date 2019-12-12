@@ -387,5 +387,42 @@ export default {
     }
   }
 }
+@media screen and (max-width: 320px) {
+  .clock {
+    height: 100%;
+    &__section {
+      &__middle {
+        &__subtitle {
+          font-size: 0.3rem;
+        }
+        &__digits {
+          font-size: 1.2rem;
+          margin: 4px 0 0 0;
+        }
+      }
+      &__time {
+        font-size: 1.2rem;
+        &__subtitle {
+          font-size: 0.9rem;
+        }
+        &__digits {
+          font-size: 1.4rem;
+        }
+      }
+    }
+    &__type {
+      font-size: 0.3rem;
+    }
+    &__label {
+      font-size: 0.4rem;
+      width: auto;
+      left: 20%;
+      transform: translateX(-80%);
+    }
+    &__animal {
+      height: 20px;
+    }
+  }
+}
 
 </style>

@@ -63,6 +63,14 @@ export default {
       }
     }
   }
+  @media screen and (max-width: 1024px){
+    .home__title {
+      font-size: 3rem;
+    }
+    .home__subtitle, .home__container__link {
+      font-size: 1rem;
+    }
+  }
   @media screen and (max-width: 480px) {
     .home__title {
       font-size: 2.3rem;

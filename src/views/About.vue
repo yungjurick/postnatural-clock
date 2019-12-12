@@ -93,6 +93,12 @@
       <br>
       <br>
       <p class="about__text">
+        Links to Detailed Documentation:
+        <br><br>
+        <a href="https://www.notion.so/yungjurick/The-Weight-of-Time-a93f0588161b4310b1ba96c5c1f365d8">First Iteration</a>
+        <br>
+        <a href="https://www.notion.so/yungjurick/The-Weight-of-Time-10ace8c9b624456d935ac1f38e960ff8">Final Iteration</a>
+        <br><br>
         &copy; 2019 Yung Ju Rick Kim
       </p>
     </div>

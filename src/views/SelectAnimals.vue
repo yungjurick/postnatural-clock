@@ -466,6 +466,18 @@ export default {
       &__small {
         font-size: 0.7rem;
       }
+      &__gallery {
+        margin-top: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-column-gap: 5px;
+        grid-row-gap: 10px;
+        &__item {
+          height: 120px;
+          &__name {
+            font-size: 0.8rem;
+          }
+        }
+      }
     }
   }
 }

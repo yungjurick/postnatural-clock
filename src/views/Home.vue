@@ -79,4 +79,12 @@ export default {
       font-size: 0.8rem;
     }
   }
+  @media screen and (max-width: 320px) {
+    .home__title {
+      font-size: 1.8rem;
+    }
+    .home__subtitle, .home__container__link {
+      font-size: 0.6rem;
+    }
+  }
 </style>
